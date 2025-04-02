@@ -15,18 +15,12 @@ pip install ccm_analysis_pynb
 To use this package in a Jupyter Notebook, import the function and run the analysis:
 
 ```python
-import pandas as pd
 from ccm_analysis_pynb import run_ccm_analysis_jupyter
 
-# Example dataset
-data = {
-    'Species_A': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    'Species_B': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-}
 df = pd.DataFrame(data)
 
 # Run CCM analysis
-result_holder = run_ccm_analysis_jupyter(df, L=10, E=2, tau=1, THRESHOLD=0.8, save_output=False)
+result_holder = run_ccm_analysis_jupyter(df, L=100, E=2, tau=1, THRESHOLD=0.8, save_output=False)
 
 # Access the final DataFrame of significant relationships
 final_results = result_holder.result
