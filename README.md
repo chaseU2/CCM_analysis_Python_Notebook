@@ -42,6 +42,17 @@ print(final_results)
 
 The function returns an interactive widget for manual evaluation of relationships. Once the evaluation is completed, it generates a final heatmap and saves the results if `save_output=True`.
 
----
+## Test Dataset
 
-For more details, check the source code and documentation!
+You can test the `ccm_analysis` package using the sample dataset provided in this repository. You can download the test dataset from the following link:
+
+- [Test Dataset (ccm_test_data.txt)](https://github.com/chaseU2/ccm-analysis-tool/blob/master/ccm_test_data.txt)
+
+  
+
+### Data Format
+
+The dataset is structured as follows:
+
+- **Columns** represent the variables you want to analyze.
+- **Rows** represent the time points for each variable.
