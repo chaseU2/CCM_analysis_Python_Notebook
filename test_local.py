@@ -1,0 +1,1 @@
+pip install ccm_analysis_pynb
