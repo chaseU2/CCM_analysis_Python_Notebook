@@ -56,3 +56,8 @@ The dataset is structured as follows:
 
 - **Columns** represent the variables you want to analyze.
 - **Rows** represent the time points for each variable.
+
+[![PyPI version](https://img.shields.io/pypi/v/ccm-analysis-pynb.svg)](https://pypi.org/project/ccm-analysis-pynb/)
+
+This repository provides a Python package for performing Convergent Cross Mapping (CCM) analysis on time series data in **Jupyter Notebooks**.
+
