@@ -60,3 +60,10 @@ The dataset is structured as follows:
 
 
 
+## Dependencies and Acknowledgements
+
+Parts of this project are based on the Convergent Cross Mapping (CCM) implementation from the following repository from Prince Javier :
+
+- [Convergent Cross Mapping GitHub Repository Prince Javier ](https://github.com/PrinceJavier/causal_ccm.git)
+
+I have utilized parts of the CCM algorithm from this repository to help analyze causality in time series data in my own project.
