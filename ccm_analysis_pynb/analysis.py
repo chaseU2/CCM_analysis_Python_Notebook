@@ -192,8 +192,9 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         options=[
             ('None', 0),
             ('Both directions', 1),
-            (f"{current_pair['species1']}→{current_pair['species2']} only", 2),
-            (f"{current_pair['species2']}→{current_pair['species1']} only", 3)
+
+            (f"{pairs_to_evaluate[0]['species1']}→{pairs_to_evaluate[0]['species2']} only", 2),
+            (f"{pairs_to_evaluate[0]['species2']}→{pairs_to_evaluate[0]['species1']} only", 3)
         ],
         value=0,
         description='Decision:',

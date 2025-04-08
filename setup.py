@@ -3,7 +3,9 @@ from setuptools import setup, find_packages
 
 setup(
     name="ccm_analysis_pynb",  # Paketname
+
     version="1.4.0",  # Initiale Version
+
     description="A package for performing Convergent Cross Mapping (CCM) analysis on time series data in Python Notebooks",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
