@@ -356,14 +356,18 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         # Plot the heatmap
         im = plt.imshow(final_matrix, cmap=cmap, norm=norm, aspect='auto')
 
-        # Add values to cells
+
+        ax = sns.heatmap(final_matrix, cmap="YlGnBu", annot=False, zorder=0)
+
+        # Dann die Texte drüber zeichnen
         for i in range(len(final_matrix.index)):
             for j in range(len(final_matrix.columns)):
                 if i != j and final_matrix.iloc[i, j] >= THRESHOLD:
                     plt.text(j, i, f"{final_matrix.iloc[i, j]:.2f}",
                             ha='center', va='center',
                             color='black',
-                            fontsize=9, weight='bold')
+                            fontsize=9, weight='bold', zorder=1)
+
 
         # Set ticks and labels
         plt.xticks(range(len(final_matrix.columns)), final_matrix.columns, rotation=90, fontsize=10)
