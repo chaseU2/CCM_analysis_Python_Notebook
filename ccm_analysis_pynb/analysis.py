@@ -339,9 +339,9 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         final_matrix = pd.DataFrame(0, index=significant_species, columns=significant_species)
         
         for _, row in convergence_results.iterrows():
-            if row['X_to_Y_ρ'] > THRESHOLD:
+            if row['X_to_Y_ρ'] >= THRESHOLD:
                 final_matrix.loc[row['Species_X'], row['Species_Y']] = row['X_to_Y_ρ']
-            if row['Y_to_X_ρ'] > THRESHOLD:
+            if row['Y_to_X_ρ'] >= THRESHOLD:
                 final_matrix.loc[row['Species_Y'], row['Species_X']] = row['Y_to_X_ρ']
         
         # Store the final result
