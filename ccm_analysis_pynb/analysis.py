@@ -362,7 +362,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
                 if i != j and final_matrix.iloc[i, j] >= THRESHOLD:
                     plt.text(j, i, f"{final_matrix.iloc[i, j]:.2f}",
                             ha='center', va='center',
-                            color='black' if final_matrix.iloc[i, j] < 0.5 else 'white',
+                            color='black' if final_matrix.iloc[i, j] < THRESHOLD+(1-THRESHOLD)/2 else 'white',
                             fontsize=9, weight='bold')
 
         # Set ticks and labels
