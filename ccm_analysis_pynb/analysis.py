@@ -151,7 +151,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
                 continue
                 
             score = results_df.iloc[i, j]
-            if score <= THRESHOLD:
+            if score < THRESHOLD:
                 continue
                 
             analyzed_pairs.add((species1, species2))
@@ -359,7 +359,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         # Add values to cells
         for i in range(len(final_matrix.index)):
             for j in range(len(final_matrix.columns)):
-                if i != j and final_matrix.iloc[i, j] > THRESHOLD:
+                if i != j and final_matrix.iloc[i, j] >= THRESHOLD:
                     plt.text(j, i, f"{final_matrix.iloc[i, j]:.2f}",
                             ha='center', va='center',
                             color='black' if final_matrix.iloc[i, j] < 0.5 else 'white',
@@ -377,9 +377,9 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
 
         # Add colorbar
         cbar = plt.colorbar(im, shrink=0.8)
-        cbar.set_label(f'Cross-Map Score (ρ > {THRESHOLD})', rotation=270, labelpad=20)
+        cbar.set_label(f'Cross-Map Score (ρ >={THRESHOLD})', rotation=270, labelpad=20)
 
-        plt.title(f'Significant CCM Relationships (ρ > {THRESHOLD})', pad=20, fontsize=14)
+        plt.title(f'Significant CCM Relationships (ρ >= {THRESHOLD})', pad=20, fontsize=14)
         plt.tight_layout()
 
         if save_output:

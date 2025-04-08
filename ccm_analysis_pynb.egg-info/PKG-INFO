@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: ccm_analysis_pynb
-Version: 1.6.0
+Version: 1.7.0
 Summary: A package for performing Convergent Cross Mapping (CCM) analysis on time series data in Python Notebooks
 Home-page: https://github.com/chaseU2/CCM_analysis_Python_Notebook
 Author: Karl Balzer
