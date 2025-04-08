@@ -185,22 +185,24 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
     # Create interactive evaluation interface
     current_index = 0
     
-    # Create widgets
-    status_label = widgets.Label(value=f"Pair 1 of {len(pairs_to_evaluate)}: {pairs_to_evaluate[0]['species1']} ↔ {pairs_to_evaluate[0]['species2']}")
+    def create_decision_buttons(pair):
+        """Helper function to create decision buttons with current pair"""
+        return widgets.RadioButtons(
+            options=[
+                ('None', 0),
+                ('Both directions', 1),
+                (f"{pair['species1']}→{pair['species2']} only", 2),
+                (f"{pair['species2']}→{pair['species1']} only", 3)
+            ],
+            value=pair['decision'] if pair['decision'] is not None else 0,
+            description='Decision:',
+            disabled=False,
+            layout={'width': 'max-content'}
+        )
     
-    decision_buttons = widgets.RadioButtons(
-        options=[
-            ('None', 0),
-            ('Both directions', 1),
-
-            (f"{pairs_to_evaluate[0]['species1']}→{pairs_to_evaluate[0]['species2']} only", 2),
-            (f"{pairs_to_evaluate[0]['species2']}→{pairs_to_evaluate[0]['species1']} only", 3)
-        ],
-        value=0,
-        description='Decision:',
-        disabled=False,
-        layout={'width': 'max-content'}
-    )
+    # Create initial widgets
+    status_label = widgets.Label(value=f"Pair 1 of {len(pairs_to_evaluate)}: {pairs_to_evaluate[0]['species1']} ↔ {pairs_to_evaluate[0]['species2']}")
+    decision_buttons = create_decision_buttons(pairs_to_evaluate[0])
     
     prev_button = widgets.Button(
         description='Previous',
@@ -226,19 +228,26 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
     )
     
     buttons_box = widgets.HBox([prev_button, next_button, finish_button])
-    
     output = widgets.Output()
     
     def update_display(index):
-        nonlocal current_index
+        nonlocal current_index, decision_buttons
         current_index = index
+        pair = pairs_to_evaluate[index]
         
         # Update status label
-        pair = pairs_to_evaluate[index]
         status_label.value = f"Pair {index+1} of {len(pairs_to_evaluate)}: {pair['species1']} ↔ {pair['species2']}"
         
-        # Update decision buttons
-        decision_buttons.value = pair['decision'] if pair['decision'] is not None else 0
+        # Create new decision buttons with current pair
+        new_decision_buttons = create_decision_buttons(pair)
+        
+        # Copy the current value and event handler
+        new_decision_buttons.value = decision_buttons.value
+        new_decision_buttons.observe(on_decision_change, names='value')
+        
+        # Replace the old buttons
+        decision_buttons.close()
+        decision_buttons = new_decision_buttons
         
         # Update button states
         prev_button.disabled = index <= 0
@@ -246,6 +255,9 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         
         with output:
             clear_output(wait=True)
+            
+            # Display updated widgets
+            display(widgets.VBox([status_label, decision_buttons, buttons_box]))
             
             # Create new plot
             plt.figure(figsize=(12, 7))
