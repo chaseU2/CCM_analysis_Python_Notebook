@@ -194,7 +194,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
                 (f"{pair['species1']}→{pair['species2']} only", 2),
                 (f"{pair['species2']}→{pair['species1']} only", 3)
             ],
-            value=pair['decision'] if pair['decision'] is not None else 0,
+            value=0,  # Always initialize to 'None'
             description='Decision:',
             disabled=False,
             layout={'width': 'max-content'}
@@ -230,6 +230,10 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
     buttons_box = widgets.HBox([prev_button, next_button, finish_button])
     output = widgets.Output()
     
+    # Create main container for all widgets
+    main_container = widgets.VBox([status_label, decision_buttons, buttons_box, output])
+    display(main_container)
+    
     def update_display(index):
         nonlocal current_index, decision_buttons
         current_index = index
@@ -238,15 +242,17 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         # Update status label
         status_label.value = f"Pair {index+1} of {len(pairs_to_evaluate)}: {pair['species1']} ↔ {pair['species2']}"
         
-        # Create new decision buttons with current pair
+        # Create new decision buttons with current pair and reset to 'None'
         new_decision_buttons = create_decision_buttons(pair)
         
-        # Copy the current value and event handler
-        new_decision_buttons.value = decision_buttons.value
+        # Store the None selection in the pairs data
+        pair['decision'] = 0
+        
+        # Set up event handler before displaying
         new_decision_buttons.observe(on_decision_change, names='value')
         
-        # Replace the old buttons
-        decision_buttons.close()
+        # Replace the old buttons in the container
+        main_container.children = (status_label, new_decision_buttons, buttons_box, output)
         decision_buttons = new_decision_buttons
         
         # Update button states
@@ -255,9 +261,6 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         
         with output:
             clear_output(wait=True)
-            
-            # Display updated widgets
-            display(widgets.VBox([status_label, decision_buttons, buttons_box]))
             
             # Create new plot
             plt.figure(figsize=(12, 7))
@@ -397,7 +400,6 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
     finish_button.on_click(on_finish_clicked)
     
     # Initial display
-    display(widgets.VBox([status_label, decision_buttons, buttons_box, output]))
     update_display(0)
     
     # Return the result holder which will contain the final result
