@@ -151,7 +151,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
                 continue
                 
             score = results_df.iloc[i, j]
-            if score < THRESHOLD:
+            if score <= THRESHOLD:
                 continue
                 
             analyzed_pairs.add((species1, species2))
@@ -351,7 +351,7 @@ def run_ccm_analysis_jupyter(data_input, L=110, E=2, tau=1, THRESHOLD=0.8, save_
         plt.figure(figsize=(12, 10))
         cmap = plt.cm.Reds
         cmap.set_under('white')
-        norm = colors.Normalize(vmin=THRESHOLD+0.01, vmax=1)
+        norm = colors.Normalize(vmin=THRESHOLD, vmax=1)
 
         # Plot the heatmap
         im = plt.imshow(final_matrix, cmap=cmap, norm=norm, aspect='auto')
