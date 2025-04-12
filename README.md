@@ -75,7 +75,7 @@ You have to click at one of the options shown and then on next. When you are don
 
 ### 1. No Significant Causality
 
-![No Causal Relationship](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python_Notebook/main/ccm_analysis_pynbb/Screenshot%2013.png)
+![No Causal Relationship](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python_Notebook/main/ccm_analysis_pynb/Screenshot%2013.png)
 
 - Neither directional curve (X→Y in blue, Y→X in red) show a clear convergence to a final crossmap score
 - Example use case: Independent systems
