@@ -1,7 +1,7 @@
 # CCM Analysis for Python Notebooks
 [![PyPI version](https://img.shields.io/pypi/v/ccm-analysis-pynb.svg)](https://pypi.org/project/ccm-analysis-pynb/)
 
-A Python package for performing Convergent Cross Mapping (CCM) analysis on time series data.
+Package implementing Convergent Cross Mapping for causality inference in dynamical systems as defined by ["Sugihara et al (2012)"](https://www.science.org/doi/10.1126/science.1227079).
 > **Note:** This package is optimized for Jupyter Notebooks (`.ipynb`). If you need to perform CCM analysis in a Python script (`.py`), please use [CCM_analysis_Python](https://github.com/chaseU2/CCM_analysis_Python).
 
 ## Installation
