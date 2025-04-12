@@ -59,6 +59,48 @@ The dataset is structured as follows:
 - **Rows** represent the time points for each variable.
 
 
+## Interpreting Convergence Plots
+
+The package generates diagnostic convergence plots that reveal causal relationships between variables. Below are the three characteristic patterns to analyze:
+
+
+
+
+
+Here you have to take a look at the shown plot and decide in which directions you can see a convergence of the crossmap skill with increasing library size.
+You have to click at one of the options shown and then on next. When you are done you have to klick on Finish Evaluation
+
+
+---
+
+### 1. No Significant Causality
+
+![No Causal Relationship](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python_Notebook/main/ccm_analysis_pynbb/Screenshot%2013.png)
+
+- Neither directional curve (X→Y in blue, Y→X in red) show a clear convergence to a final crossmap score
+- Example use case: Independent systems
+
+---
+
+### 2. Unidirectional Causality
+![Unidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python/main/ccm_analysis/Screenshot%203.png)
+
+- One direction (X→Y) converges to a final crossmap score
+- Reverse direction (Y→X) does ot show a clear convegence
+- Interpretation: X drives Y but not vice versa
+- Pay attention to whether convergence is present in the X→Y or Y→X plot, and enter 2 or 3 accordingly
+
+---
+
+### 3. Bidirectional Causality
+![Bidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python/main/ccm_analysis/Screenshot%202.png)
+
+- Both directions show positive convergence
+- Typical of feedback systems
+- Convergence rates may differ (e.g., X→Y stronger than Y→X)
+
+
+---
 
 ## Dependencies and Acknowledgements
 
