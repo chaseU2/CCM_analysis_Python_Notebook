@@ -83,7 +83,7 @@ You have to click at one of the options shown and then on next. When you are don
 ---
 
 ### 2. Unidirectional Causality
-![Unidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python/main/ccm_analysis/Screenshot%203.png)
+![Unidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python_Notebook/main/ccm_analysis_pynb/Screenshot%2012.png)
 
 - One direction (X→Y) converges to a final crossmap score
 - Reverse direction (Y→X) does ot show a clear convegence
@@ -93,7 +93,7 @@ You have to click at one of the options shown and then on next. When you are don
 ---
 
 ### 3. Bidirectional Causality
-![Bidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python/main/ccm_analysis/Screenshot%202.png)
+![Bidirectional Causality](https://raw.githubusercontent.com/chaseU2/CCM_analysis_Python_Notebook/main/ccm_analysis_pynb/Screenshot%2011.png)
 
 - Both directions show positive convergence
 - Typical of feedback systems
