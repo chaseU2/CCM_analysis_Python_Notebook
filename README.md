@@ -41,7 +41,14 @@ print(final_results)
 
 ## Output
 
-The function returns an interactive widget for manual evaluation of relationships. Once the evaluation is completed, it generates a final heatmap and saves the results if `save_output=True`.
+The function returns an interactive widget for manual evaluation of relationships. Once the evaluation is completed, it generates a final heatmap and saves the results if `save_output=True`. You can access the output dataframe by using:
+
+```python
+
+result_holder.result
+
+```
+- result_holder is the variable you stored the function's output in. You can rename it as needed.
 
 ## Test Dataset
 
