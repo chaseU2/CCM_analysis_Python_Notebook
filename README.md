@@ -18,11 +18,12 @@ To use this package in a Jupyter Notebook, import the function and run the analy
 
 ```python
 from ccm_analysis_pynb import run_ccm_analysis_jupyter
+import pandas as pd
 
-df = pd.DataFrame(data)
+data = pd.read_csv("example_data.tsv", delimiter="\t")
 
 # Run CCM analysis
-result_holder = run_ccm_analysis_jupyter(df, L=100, E=2, tau=1, THRESHOLD=0.8, save_output=False)
+result_holder = run_ccm_analysis_jupyter(data, L=100, E=2, tau=1, THRESHOLD=0.8, save_output=True, output_dir="output")
 
 # Access the final DataFrame of significant relationships
 final_results = result_holder.result
